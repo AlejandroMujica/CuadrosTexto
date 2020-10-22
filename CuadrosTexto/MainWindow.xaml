@@ -18,12 +18,14 @@
                    TextWrapping="Wrap"
                    Text="Edad"
                    VerticalAlignment="Top" />
-        <TextBlock x:Name="ayudanombreTextBlock" HorizontalAlignment="Left" Margin="190,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="#FF787878"/>
+        <TextBlock x:Name="ayudanombreTextBlock" Tag="" HorizontalAlignment="Left" Margin="190,73,0,0" TextWrapping="Wrap" Visibility="Hidden" Text="Nombre del cliente" VerticalAlignment="Top" Foreground="#FF787878"/>
         <TextBlock  x:Name="ayudaapellidoTextBlock"
+                   Tag=""
                    HorizontalAlignment="Left"
                    Margin="190,147,0,0"
                    TextWrapping="Wrap"
-                   Text=""
+                   Visibility="Hidden"
+                   Text="Apellido del cliente"
                    VerticalAlignment="Top"
                    Foreground="#FF787878" />
         <TextBlock x:Name="ayudaedadTextBlock" HorizontalAlignment="Left" Margin="190,223,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Red"/>
@@ -36,7 +38,7 @@
                  Text=""
                  VerticalAlignment="Top"
                  Width="120" 
-                 KeyUp="nombreTextBox_KeyUp"/>
+                 KeyUp="ayudaTextBox_KeyUp"/>
         <TextBox Tag="Apellido del cliente"
                  x:Name="apellidoTextBox"
                  HorizontalAlignment="Left"
@@ -46,7 +48,7 @@
                  Text=""
                  VerticalAlignment="Top"
                  Width="120"
-                 KeyUp="apellidoTextBox_KeyUp"/>
+                 KeyUp="ayudaTextBox_KeyUp"/>
         <TextBox x:Name="edadTextBox"
                  HorizontalAlignment="Left"
                  Height="23"

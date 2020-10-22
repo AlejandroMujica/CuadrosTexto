@@ -1,5 +1,7 @@
 ﻿
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 
@@ -13,39 +15,27 @@ namespace CuadrosTexto
         public MainWindow()
         {
             InitializeComponent();
+            nombreTextBox.Tag = ayudanombreTextBlock;
+            apellidoTextBox.Tag = ayudaapellidoTextBlock;
         }
 
 
-        private void nombreTextBox_KeyUp(object sender, KeyEventArgs e)
+        private void ayudaTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.F1 && ayudanombreTextBlock.Text.Length == 0)
+            TextBox tb =(TextBox)sender;
+            if (e.Key == Key.F1 && (tb.Tag as TextBlock).Visibility==Visibility.Hidden)
             {
-                ayudanombreTextBlock.Text = "Nombre del cliente";
+               (tb.Tag as TextBlock).Visibility = Visibility.Visible;
             }
             else if(e.Key == Key.F1)
             {
-                ayudanombreTextBlock.Text = "";
-            }
-        }
-
-        private void apellidoTextBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.F1 && ayudaapellidoTextBlock.Text.Length==0)
-            {
-                ayudaapellidoTextBlock.Text = "Apellido del cliente";
-            }
-            else if(e.Key == Key.F1)
-            {
-                ayudaapellidoTextBlock.Text = "";
+                (tb.Tag as TextBlock).Visibility = Visibility.Hidden;
             }
         }
 
         private void edadTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            int numero;
-            bool correcto = int.TryParse(ayudaedadTextBlock.Text, out numero);
-
-            if (e.Key == Key.F2 && !correcto)
+            if (e.Key == Key.F2 && !Regex.IsMatch(edadTextBox.Text,"^[0-9]+$"))
             {
                 ayudaedadTextBlock.Text = "Edad incorrecta";
             }
